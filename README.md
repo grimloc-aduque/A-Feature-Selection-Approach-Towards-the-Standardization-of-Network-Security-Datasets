@@ -16,4 +16,4 @@ Refer to: https://github.com/grimloc-aduque/Autoencoder-based-Standard-Latent-Sp
 # Jupyter Notebooks
 * nb05_feature_selection.ipynb follows the proposed feature selection scheme in one dataset
 * nb06_interdataset_feature_selection_analysis.ipynb analizes commonalities of features between datasets
-* nb07_intradataset_feature_selection_analysis.ipynb analizes the most important features within every dataset
+* nb07_intradataset_feature_selection_analysis.ipynb analizes the most important features within each dataset
