@@ -1,0 +1,134 @@
+Starting Feature Selection at 2022-10-13 13:37:14.075868
+
+Dataset: 4_NSL-KDD
+X shape: (148517, 41)
+y shape: (148517, 1)
+y proportions: 
+class
+0        0.518823
+1        0.481177
+dtype: float64
+
+
+Base models
+
+Best model: Pipeline(steps=[('classifier', LogisticRegression(C=1))])
+Train Accuracy: 0.937183
+Average Time to Fit (s): 3.094
+Average Time to Score (s): 0.015
+Test Accuracy: 0.937517
+
+Best model: Pipeline(steps=[('classifier', KNeighborsClassifier(n_neighbors=1))])
+Train Accuracy: 0.990897
+Average Time to Fit (s): 0.053
+Average Time to Score (s): 55.953
+Test Accuracy: 0.991839
+
+Best model: Pipeline(steps=[('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.992378
+Average Time to Fit (s): 1.309
+Average Time to Score (s): 0.016
+Test Accuracy: 0.992028
+
+Best model: Pipeline(steps=[('classifier', RandomForestClassifier(max_depth=3))])
+Train Accuracy: 0.928277
+Average Time to Fit (s): 3.595
+Average Time to Score (s): 0.158
+Test Accuracy: 0.922219
+
+Best base model: DecisionTreeClassifier()
+
+Filters
+
+Correlacion
+
+Best model: Pipeline(steps=[('select',
+                 SelectKBest(k=20,
+                             score_func=<function execute_feature_selection.<locals>.correlation at 0x7fd96b2c1f28>)),
+                ('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.987745
+Average Time to Fit (s): 1.237
+Average Time to Score (s): 0.013
+Test Accuracy: 0.9878
+Number of features: 20
+Index(['protocol_type', 'service', 'flag', 'logged_in', 'count', 'serror_rate',
+       'srv_serror_rate', 'rerror_rate', 'srv_rerror_rate', 'same_srv_rate',
+       'diff_srv_rate', 'srv_diff_host_rate', 'dst_host_count',
+       'dst_host_srv_count', 'dst_host_same_srv_rate',
+       'dst_host_diff_srv_rate', 'dst_host_serror_rate',
+       'dst_host_srv_serror_rate', 'dst_host_rerror_rate',
+       'dst_host_srv_rerror_rate'],
+      dtype='object')
+
+P-value
+
+Best model: Pipeline(steps=[('select', SelectKBest(k=20)),
+                ('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.987799
+Average Time to Fit (s): 0.637
+Average Time to Score (s): 0.011
+Test Accuracy: 0.988123
+Number of features: 20
+Index(['protocol_type', 'service', 'flag', 'logged_in', 'count', 'serror_rate',
+       'srv_serror_rate', 'rerror_rate', 'srv_rerror_rate', 'same_srv_rate',
+       'diff_srv_rate', 'srv_diff_host_rate', 'dst_host_count',
+       'dst_host_srv_count', 'dst_host_same_srv_rate',
+       'dst_host_diff_srv_rate', 'dst_host_serror_rate',
+       'dst_host_srv_serror_rate', 'dst_host_rerror_rate',
+       'dst_host_srv_rerror_rate'],
+      dtype='object')
+
+Wrappers
+
+Decision Tree
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=DecisionTreeClassifier(),
+                                 max_features=20)),
+                ('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.962554
+Average Time to Fit (s): 0.714
+Average Time to Score (s): 0.011
+Test Accuracy: 0.959978
+Number of features: 5
+Index(['protocol_type', 'flag', 'dst_host_diff_srv_rate',
+       'dst_host_srv_diff_host_rate', 'dst_host_rerror_rate'],
+      dtype='object')
+
+Logistic Regression
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=LogisticRegression(),
+                                 max_features=20)),
+                ('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.974728
+Average Time to Fit (s): 4.001
+Average Time to Score (s): 0.014
+Test Accuracy: 0.972879
+Number of features: 16
+Index(['protocol_type', 'flag', 'wrong_fragment', 'num_failed_logins',
+       'su_attempted', 'is_host_login', 'is_guest_login', 'count', 'srv_count',
+       'srv_serror_rate', 'srv_rerror_rate', 'dst_host_count',
+       'dst_host_srv_count', 'dst_host_same_srv_rate',
+       'dst_host_srv_diff_host_rate', 'dst_host_srv_serror_rate'],
+      dtype='object')
+
+SVC
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=LinearSVC(), max_features=20)),
+                ('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.973471
+Average Time to Fit (s): 4.589
+Average Time to Score (s): 0.013
+Test Accuracy: 0.973741
+Number of features: 17
+Index(['protocol_type', 'flag', 'src_bytes', 'wrong_fragment', 'urgent',
+       'num_failed_logins', 'su_attempted', 'num_file_creations', 'num_shells',
+       'num_access_files', 'is_host_login', 'is_guest_login', 'count',
+       'srv_serror_rate', 'srv_rerror_rate', 'dst_host_srv_count',
+       'dst_host_same_srv_rate'],
+      dtype='object')
+
+Finishing Feature Selection at 2022-10-13 14:00:57.144436
+

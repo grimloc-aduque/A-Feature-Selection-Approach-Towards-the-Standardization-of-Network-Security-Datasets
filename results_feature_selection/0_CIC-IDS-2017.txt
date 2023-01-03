@@ -1,0 +1,133 @@
+Starting Feature Selection at 2022-10-13 13:37:14.075374
+
+Dataset: 0_CIC-IDS-2017
+X shape: (3053587, 78)
+y shape: (3053587, 1)
+y proportions: 
+ Label
+0         0.775811
+1         0.224189
+dtype: float64
+
+
+Base models
+
+Best model: Pipeline(steps=[('classifier', LogisticRegression(C=10))])
+Train Accuracy: 0.928947
+Average Time to Fit (s): 63.294
+Average Time to Score (s): 0.208
+Test Accuracy: 0.933689
+
+Best model: Pipeline(steps=[('classifier', KNeighborsClassifier(n_neighbors=1))])
+Train Accuracy: 0.995047
+Average Time to Fit (s): 0.751
+Average Time to Score (s): 17955.313
+Test Accuracy: 0.995466
+
+Best model: Pipeline(steps=[('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.99776
+Average Time to Fit (s): 82.952
+Average Time to Score (s): 0.177
+Test Accuracy: 0.997829
+
+Best model: Pipeline(steps=[('classifier', RandomForestClassifier(max_depth=3))])
+Train Accuracy: 0.904288
+Average Time to Fit (s): 108.805
+Average Time to Score (s): 1.805
+Test Accuracy: 0.899068
+
+Best base model: DecisionTreeClassifier()
+
+Filters
+
+Correlacion
+
+Best model: Pipeline(steps=[('select',
+                 SelectKBest(k=15,
+                             score_func=<function execute_feature_selection.<locals>.correlation at 0x7fdabaf750d0>)),
+                ('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.97575
+Average Time to Fit (s): 52.516
+Average Time to Score (s): 0.114
+Test Accuracy: 0.975633
+Number of features: 15
+Index(['Bwd Packet Length Max', ' Bwd Packet Length Mean',
+       ' Bwd Packet Length Std', ' Flow IAT Max', ' Fwd IAT Std',
+       ' Fwd IAT Max', ' Max Packet Length', ' Packet Length Mean',
+       ' Packet Length Std', ' Packet Length Variance', ' Average Packet Size',
+       ' Avg Bwd Segment Size', 'Idle Mean', ' Idle Max', ' Idle Min'],
+      dtype='object')
+
+P-value
+
+Best model: Pipeline(steps=[('select', SelectKBest(k=15)),
+                ('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.975763
+Average Time to Fit (s): 28.517
+Average Time to Score (s): 0.134
+Test Accuracy: 0.975639
+Number of features: 15
+Index(['Bwd Packet Length Max', ' Bwd Packet Length Mean',
+       ' Bwd Packet Length Std', ' Flow IAT Max', ' Fwd IAT Std',
+       ' Fwd IAT Max', ' Max Packet Length', ' Packet Length Mean',
+       ' Packet Length Std', ' Packet Length Variance', ' Average Packet Size',
+       ' Avg Bwd Segment Size', 'Idle Mean', ' Idle Max', ' Idle Min'],
+      dtype='object')
+
+Wrappers
+
+Decision Tree
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=DecisionTreeClassifier(),
+                                 max_features=20)),
+                ('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.998147
+Average Time to Fit (s): 55.443
+Average Time to Score (s): 0.103
+Test Accuracy: 0.998184
+Number of features: 7
+Index([' Destination Port', ' Bwd Packet Length Std', ' Max Packet Length',
+       ' Average Packet Size', ' Subflow Bwd Packets',
+       'Init_Win_bytes_forward', ' Init_Win_bytes_backward'],
+      dtype='object')
+
+Logistic Regression
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=LogisticRegression(),
+                                 max_features=20)),
+                ('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.976535
+Average Time to Fit (s): 62.716
+Average Time to Score (s): 0.178
+Test Accuracy: 0.977102
+Number of features: 16
+Index([' Fwd Packet Length Max', ' Fwd Packet Length Mean',
+       ' Fwd Packet Length Std', 'Bwd Packet Length Max',
+       ' Bwd Packet Length Mean', ' Flow IAT Std', ' Flow IAT Max',
+       'Bwd IAT Total', ' Max Packet Length', ' Packet Length Variance',
+       ' Down/Up Ratio', ' Average Packet Size', ' Avg Fwd Segment Size',
+       ' Avg Bwd Segment Size', ' Init_Win_bytes_backward', ' Idle Max'],
+      dtype='object')
+
+SVC
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=LinearSVC(), max_features=20)),
+                ('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.976026
+Average Time to Fit (s): 310.542
+Average Time to Score (s): 0.166
+Test Accuracy: 0.975906
+Number of features: 20
+Index([' Fwd Packet Length Max', ' Fwd Packet Length Std', 'Flow Bytes/s',
+       ' Flow IAT Mean', ' Flow IAT Std', ' Flow IAT Max', ' Flow IAT Min',
+       ' Fwd IAT Mean', ' Fwd IAT Max', ' Fwd IAT Min', ' Max Packet Length',
+       ' Packet Length Mean', ' Packet Length Variance', ' Down/Up Ratio',
+       ' Average Packet Size', ' Active Std', ' Active Max', ' Idle Std',
+       ' Idle Max', ' Idle Min'],
+      dtype='object')
+
+Finishing Feature Selection at 2022-10-17 06:43:01.628978
+

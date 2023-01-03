@@ -1,0 +1,129 @@
+Starting Feature Selection at 2022-10-13 13:37:14.075642
+
+Dataset: 2_NF-UNSW-NB15-v2
+X shape: (2390275, 41)
+y shape: (2390275, 1)
+y proportions: 
+Label
+0        0.960233
+1        0.039767
+dtype: float64
+
+
+Base models
+
+Best model: Pipeline(steps=[('classifier', LogisticRegression(C=10))])
+Train Accuracy: 0.991348
+Average Time to Fit (s): 48.907
+Average Time to Score (s): 0.149
+Test Accuracy: 0.991353
+
+Best model: Pipeline(steps=[('classifier', KNeighborsClassifier())])
+Train Accuracy: 0.996259
+Average Time to Fit (s): 0.481
+Average Time to Score (s): 10419.57
+Test Accuracy: 0.996382
+
+Best model: Pipeline(steps=[('classifier', DecisionTreeClassifier(max_depth=13))])
+Train Accuracy: 0.997299
+Average Time to Fit (s): 15.161
+Average Time to Score (s): 0.082
+Test Accuracy: 0.997378
+
+Best model: Pipeline(steps=[('classifier', RandomForestClassifier(max_depth=3))])
+Train Accuracy: 0.995599
+Average Time to Fit (s): 48.911
+Average Time to Score (s): 1.183
+Test Accuracy: 0.995634
+
+Best base model: DecisionTreeClassifier()
+
+Filters
+
+Correlacion
+
+Best model: Pipeline(steps=[('select',
+                 SelectKBest(k=15,
+                             score_func=<function execute_feature_selection.<locals>.correlation at 0x7fdabaf750d0>)),
+                ('classifier', DecisionTreeClassifier(max_depth=13))])
+Train Accuracy: 0.997077
+Average Time to Fit (s): 12.131
+Average Time to Score (s): 0.075
+Test Accuracy: 0.997219
+Number of features: 15
+Index(['L4_DST_PORT', 'PROTOCOL', 'TCP_FLAGS', 'CLIENT_TCP_FLAGS',
+       'SERVER_TCP_FLAGS', 'MIN_TTL', 'MAX_TTL', 'LONGEST_FLOW_PKT',
+       'SHORTEST_FLOW_PKT', 'MIN_IP_PKT_LEN', 'MAX_IP_PKT_LEN',
+       'DST_TO_SRC_AVG_THROUGHPUT', 'NUM_PKTS_UP_TO_128_BYTES',
+       'TCP_WIN_MAX_IN', 'DNS_QUERY_TYPE'],
+      dtype='object')
+
+P-value
+
+Best model: Pipeline(steps=[('select', SelectKBest(k=15)),
+                ('classifier', DecisionTreeClassifier(max_depth=13))])
+Train Accuracy: 0.997078
+Average Time to Fit (s): 6.17
+Average Time to Score (s): 0.079
+Test Accuracy: 0.997215
+Number of features: 15
+Index(['L4_DST_PORT', 'PROTOCOL', 'TCP_FLAGS', 'CLIENT_TCP_FLAGS',
+       'SERVER_TCP_FLAGS', 'MIN_TTL', 'MAX_TTL', 'LONGEST_FLOW_PKT',
+       'SHORTEST_FLOW_PKT', 'MIN_IP_PKT_LEN', 'MAX_IP_PKT_LEN',
+       'DST_TO_SRC_AVG_THROUGHPUT', 'NUM_PKTS_UP_TO_128_BYTES',
+       'TCP_WIN_MAX_IN', 'DNS_QUERY_TYPE'],
+      dtype='object')
+
+Wrappers
+
+Decision Tree
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=DecisionTreeClassifier(max_depth=3),
+                                 max_features=20)),
+                ('classifier', DecisionTreeClassifier(max_depth=11))])
+Train Accuracy: 0.995583
+Average Time to Fit (s): 9.33
+Average Time to Score (s): 0.047
+Test Accuracy: 0.995485
+Number of features: 2
+Index(['MIN_TTL', 'TCP_WIN_MAX_IN'], dtype='object')
+
+Logistic Regression
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=LogisticRegression(),
+                                 max_features=20)),
+                ('classifier', DecisionTreeClassifier(max_depth=11))])
+Train Accuracy: 0.99669
+Average Time to Fit (s): 28.156
+Average Time to Score (s): 0.092
+Test Accuracy: 0.996799
+Number of features: 11
+Index(['L4_DST_PORT', 'PROTOCOL', 'TCP_FLAGS', 'CLIENT_TCP_FLAGS',
+       'SERVER_TCP_FLAGS', 'DURATION_IN', 'MIN_TTL', 'MAX_TTL',
+       'MIN_IP_PKT_LEN', 'DST_TO_SRC_AVG_THROUGHPUT',
+       'NUM_PKTS_128_TO_256_BYTES'],
+      dtype='object')
+
+SVC
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=LinearSVC(dual=False),
+                                 max_features=20)),
+                ('classifier', DecisionTreeClassifier(max_depth=13))])
+Train Accuracy: 0.996794
+Average Time to Fit (s): 45.671
+Average Time to Score (s): 0.078
+Test Accuracy: 0.996851
+Number of features: 16
+Index(['L4_DST_PORT', 'PROTOCOL', 'OUT_PKTS', 'CLIENT_TCP_FLAGS',
+       'SERVER_TCP_FLAGS', 'DURATION_IN', 'DURATION_OUT', 'MAX_TTL',
+       'MIN_IP_PKT_LEN', 'DST_TO_SRC_SECOND_BYTES', 'RETRANSMITTED_IN_PKTS',
+       'RETRANSMITTED_OUT_PKTS', 'NUM_PKTS_UP_TO_128_BYTES',
+       'NUM_PKTS_256_TO_512_BYTES', 'NUM_PKTS_512_TO_1024_BYTES',
+       'DNS_TTL_ANSWER'],
+      dtype='object')
+
+Finishing Feature Selection at 2022-10-15 18:42:01.018342
+

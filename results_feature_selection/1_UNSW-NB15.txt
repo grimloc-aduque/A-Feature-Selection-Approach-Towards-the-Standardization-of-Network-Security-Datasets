@@ -1,0 +1,121 @@
+Starting Feature Selection at 2022-10-13 13:37:14.075597
+
+Dataset: 1_UNSW-NB15
+X shape: (1787204, 42)
+y shape: (1787204, 1)
+y proportions: 
+Label
+0        0.97514
+1        0.02486
+dtype: float64
+
+
+Base models
+
+Best model: Pipeline(steps=[('classifier', LogisticRegression(C=10))])
+Train Accuracy: 0.995908
+Average Time to Fit (s): 38.404
+Average Time to Score (s): 0.113
+Test Accuracy: 0.996041
+
+Best model: Pipeline(steps=[('classifier', KNeighborsClassifier(n_neighbors=1))])
+Train Accuracy: 0.998719
+Average Time to Fit (s): 0.465
+Average Time to Score (s): 6091.335
+Test Accuracy: 0.999248
+
+Best model: Pipeline(steps=[('classifier', DecisionTreeClassifier(max_depth=15))])
+Train Accuracy: 0.998548
+Average Time to Fit (s): 8.656
+Average Time to Score (s): 0.072
+Test Accuracy: 0.998592
+
+Best model: Pipeline(steps=[('classifier',
+                 RandomForestClassifier(max_depth=3, n_estimators=50))])
+Train Accuracy: 0.995642
+Average Time to Fit (s): 73.191
+Average Time to Score (s): 1.238
+Test Accuracy: 0.995463
+
+Best base model: KNeighborsClassifier()
+
+Filters
+
+Correlacion
+
+Best model: Pipeline(steps=[('select',
+                 SelectKBest(k=15,
+                             score_func=<function execute_feature_selection.<locals>.correlation at 0x7fd902ba0950>)),
+                ('classifier', KNeighborsClassifier(n_neighbors=1))])
+Train Accuracy: 0.998847
+Average Time to Fit (s): 3625.26
+Average Time to Score (s): 1598.112
+Test Accuracy: 0.999369
+Number of features: 15
+Index(['state', 'sttl', 'dttl', 'Sload', 'Dload', 'swin', 'dmeansz', 'Stime',
+       'Ltime', 'tcprtt', 'synack', 'ackdat', 'ct_state_ttl',
+       'ct_src_dport_ltm', 'ct_dst_sport_ltm'],
+      dtype='object')
+
+P-value
+
+Best model: Pipeline(steps=[('select', SelectKBest(k=15)),
+                ('classifier', KNeighborsClassifier(n_neighbors=1))])
+Train Accuracy: 0.998847
+Average Time to Fit (s): 1742.708
+Average Time to Score (s): 1355.936
+Test Accuracy: 0.999369
+Number of features: 15
+Index(['state', 'sttl', 'dttl', 'Sload', 'Dload', 'swin', 'dmeansz', 'Stime',
+       'Ltime', 'tcprtt', 'synack', 'ackdat', 'ct_state_ttl',
+       'ct_src_dport_ltm', 'ct_dst_sport_ltm'],
+      dtype='object')
+
+Wrappers
+
+Decision Tree
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=DecisionTreeClassifier(),
+                                 max_features=20)),
+                ('classifier', KNeighborsClassifier(n_neighbors=3))])
+Train Accuracy: 0.995607
+Average Time to Fit (s): 1084.253
+Average Time to Score (s): 2174.653
+Test Accuracy: 0.991475
+Number of features: 2
+Index(['sttl', 'ct_state_ttl'], dtype='object')
+
+Logistic Regression
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=LogisticRegression(),
+                                 max_features=20)),
+                ('classifier', KNeighborsClassifier(n_neighbors=1))])
+Train Accuracy: 0.997252
+Average Time to Fit (s): 6383.499
+Average Time to Score (s): 695.148
+Test Accuracy: 0.997551
+Number of features: 10
+Index(['state', 'dttl', 'service', 'swin', 'dmeansz', 'Sintpkt', 'tcprtt',
+       'synack', 'ct_state_ttl', 'ct_dst_sport_ltm'],
+      dtype='object')
+
+SVC
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=LinearSVC(dual=False),
+                                 max_features=20)),
+                ('classifier', KNeighborsClassifier(n_neighbors=1))])
+Train Accuracy: 0.997788
+Average Time to Fit (s): 4936.392
+Average Time to Score (s): 1003.174
+Test Accuracy: 0.998787
+Number of features: 15
+Index(['state', 'sbytes', 'dbytes', 'dttl', 'sloss', 'service', 'swin',
+       'dmeansz', 'res_bdy_len', 'Djit', 'Sintpkt', 'tcprtt', 'synack',
+       'ct_state_ttl', 'ct_dst_sport_ltm'],
+      dtype='object')
+
+Finishing Feature Selection at 2022-10-25 01:42:59.698256
+

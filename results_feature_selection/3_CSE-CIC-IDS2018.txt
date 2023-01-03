@@ -1,0 +1,130 @@
+Starting Feature Selection at 2022-10-13 13:37:14.075766
+
+Dataset: 3_CSE-CIC-IDS2018
+X shape: (1044525, 78)
+y shape: (1044525, 1)
+y proportions: 
+Label
+0        0.726008
+1        0.273992
+dtype: float64
+
+
+Base models
+
+Best model: Pipeline(steps=[('classifier', LogisticRegression(C=10))])
+Train Accuracy: 0.9833
+Average Time to Fit (s): 28.957
+Average Time to Score (s): 0.087
+Test Accuracy: 0.982457
+
+Best model: Pipeline(steps=[('classifier', KNeighborsClassifier(n_neighbors=1))])
+Train Accuracy: 0.99998
+Average Time to Fit (s): 0.313
+Average Time to Score (s): 2167.179
+Test Accuracy: 0.999992
+
+Best model: Pipeline(steps=[('classifier', DecisionTreeClassifier(max_depth=11))])
+Train Accuracy: 0.999972
+Average Time to Fit (s): 7.529
+Average Time to Score (s): 0.051
+Test Accuracy: 0.999985
+
+Best model: Pipeline(steps=[('classifier',
+                 RandomForestClassifier(max_depth=3, n_estimators=50))])
+Train Accuracy: 0.997387
+Average Time to Fit (s): 44.957
+Average Time to Score (s): 0.886
+Test Accuracy: 0.998338
+
+Best base model: KNeighborsClassifier()
+
+Filters
+
+Correlacion
+
+Best model: Pipeline(steps=[('select',
+                 SelectKBest(k=20,
+                             score_func=<function execute_feature_selection.<locals>.correlation at 0x7fd902ba0950>)),
+                ('classifier', KNeighborsClassifier())])
+Train Accuracy: 0.998406
+Average Time to Fit (s): 1232.419
+Average Time to Score (s): 1075.31
+Test Accuracy: 0.998514
+Number of features: 20
+Index(['Protocol', 'Flow Duration', 'Fwd Pkt Len Min', 'Bwd Pkt Len Max',
+       'Bwd Pkt Len Min', 'Bwd Pkt Len Mean', 'Bwd Pkt Len Std', 'Fwd IAT Tot',
+       'Pkt Len Min', 'Pkt Len Max', 'Pkt Len Mean', 'Pkt Len Std',
+       'Pkt Len Var', 'RST Flag Cnt', 'ACK Flag Cnt', 'ECE Flag Cnt',
+       'Pkt Size Avg', 'Bwd Seg Size Avg', 'Init Bwd Win Byts',
+       'Fwd Seg Size Min'],
+      dtype='object')
+
+P-value
+
+Best model: Pipeline(steps=[('select', SelectKBest(k=20)),
+                ('classifier', KNeighborsClassifier())])
+Train Accuracy: 0.998406
+Average Time to Fit (s): 945.431
+Average Time to Score (s): 947.692
+Test Accuracy: 0.998514
+Number of features: 20
+Index(['Protocol', 'Flow Duration', 'Fwd Pkt Len Min', 'Bwd Pkt Len Max',
+       'Bwd Pkt Len Min', 'Bwd Pkt Len Mean', 'Bwd Pkt Len Std', 'Fwd IAT Tot',
+       'Pkt Len Min', 'Pkt Len Max', 'Pkt Len Mean', 'Pkt Len Std',
+       'Pkt Len Var', 'RST Flag Cnt', 'ACK Flag Cnt', 'ECE Flag Cnt',
+       'Pkt Size Avg', 'Bwd Seg Size Avg', 'Init Bwd Win Byts',
+       'Fwd Seg Size Min'],
+      dtype='object')
+
+Wrappers
+
+Decision Tree
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=DecisionTreeClassifier(),
+                                 max_features=20)),
+                ('classifier', KNeighborsClassifier(n_neighbors=3))])
+Train Accuracy: 0.999623
+Average Time to Fit (s): 124.647
+Average Time to Score (s): 110.407
+Test Accuracy: 0.999606
+Number of features: 2
+Index(['Dst Port', 'Bwd Seg Size Avg'], dtype='object')
+
+Logistic Regression
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=LogisticRegression(),
+                                 max_features=20)),
+                ('classifier', KNeighborsClassifier())])
+Train Accuracy: 0.998501
+Average Time to Fit (s): 17.468
+Average Time to Score (s): 1450.577
+Test Accuracy: 0.998575
+Number of features: 16
+Index(['Bwd Pkt Len Std', 'Flow Pkts/s', 'Flow IAT Mean', 'Flow IAT Min',
+       'Fwd IAT Mean', 'Fwd IAT Min', 'Bwd IAT Tot', 'Fwd Pkts/s',
+       'Pkt Len Max', 'Pkt Len Std', 'FIN Flag Cnt', 'RST Flag Cnt',
+       'ACK Flag Cnt', 'ECE Flag Cnt', 'Init Bwd Win Byts',
+       'Fwd Seg Size Min'],
+      dtype='object')
+
+SVC
+
+Best model: Pipeline(steps=[('select',
+                 SelectFromModel(estimator=LinearSVC(), max_features=20)),
+                ('classifier', KNeighborsClassifier())])
+Train Accuracy: 0.99855
+Average Time to Fit (s): 57.084
+Average Time to Score (s): 1499.063
+Test Accuracy: 0.998702
+Number of features: 16
+Index(['Bwd Pkt Len Std', 'Flow Pkts/s', 'Flow IAT Mean', 'Flow IAT Max',
+       'Flow IAT Min', 'Fwd IAT Mean', 'Fwd IAT Min', 'Fwd Pkts/s',
+       'Pkt Len Mean', 'Pkt Len Std', 'Pkt Len Var', 'ACK Flag Cnt',
+       'Pkt Size Avg', 'Init Bwd Win Byts', 'Fwd Seg Size Min', 'Idle Max'],
+      dtype='object')
+
+Finishing Feature Selection at 2022-10-17 08:22:17.686629
+
